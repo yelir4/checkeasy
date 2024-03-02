@@ -1,0 +1,38 @@
+/** font root size 16pt */
+html
+{
+	font-size: 18px;
+}
+
+/** remove all default element padding, margins */
+html *
+{
+	margin: 0;
+	padding: 0;
+}
+
+header
+{
+	background-color: steelblue;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+/** lets make CheckEasy italicized !! : ) */
+header p
+{
+	font-style: italic;
+}
+
+header span
+{
+	display: flex;
+	gap: 2rem;
+	text-wrap: nowrap;
+}
+
+header span p
+{
+	font-style: normal;
+}
