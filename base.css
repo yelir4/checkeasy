@@ -16,13 +16,15 @@ header
 	background-color: steelblue;
 	display: flex;
 	justify-content: space-between;
-	padding: 1rem;
 }
 
 /** lets make CheckEasy italicized !! : ) */
 header p
 {
+	background-color: green;
+	cursor: pointer;
 	font-style: italic;
+	padding: 1rem;
 }
 
 header span
@@ -35,4 +37,30 @@ header span
 header span p
 {
 	font-style: normal;
+}
+
+main
+{
+	background-color: orange;
+	display: flex;
+	gap: 1rem;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	padding: 1rem;
+}
+
+section
+{
+	background-color: purple;
+	display: flex;
+	flex-direction: column;
+	padding: 0.5rem;
+	gap: 1rem;
+	width: 30%;
+}
+
+figure
+{
+	background-color: lightgray;
+	text-align: center;
 }
