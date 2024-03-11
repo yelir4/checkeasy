@@ -57,6 +57,11 @@ main
 	padding: 1rem 0;
 }
 
+h1
+{
+	margin-bottom: 1rem;
+}
+
 section
 {
 	background-color: purple;
@@ -80,5 +85,21 @@ figure
 	background-color: steelblue;
 	box-sizing: border-box;
 	border-radius: 1rem;
-	margin: 2rem;
+	cursor: pointer;
+	margin: 1rem 20%;
+}
+
+#newListButton
+{
+	box-sizing: border-box;
+	border-radius: 5rem;
+	cursor: pointer;
+	margin: 0 10%;
+	padding: 0.5rem 0;
+	transition: all 1s;
+}
+
+#newListButton:hover
+{
+	background-color: gray;
 }

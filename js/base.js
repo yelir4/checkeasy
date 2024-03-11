@@ -37,4 +37,8 @@ newListButton.addEventListener("click", function ()
 	const section = sections[(currentSection++ % 3)];
 	section.append(newList);
 	console.log(typeof(section));
+
+	/** move newListButton */
+	newListButton.remove();
+	sections[currentSection % 3].append(newListButton);
 });
