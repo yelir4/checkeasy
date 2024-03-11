@@ -18,15 +18,16 @@ html *
 	padding: 0;
 }
 
-nav
+header
 {
 	background-color: steelblue;
 	display: flex;
 	justify-content: space-between;
+	padding: 0 2rem;
 }
 
 /** lets make CheckEasy italicized !! : ) */
-nav p
+header p
 {
 	background-color: green;
 	cursor: pointer;
@@ -50,19 +51,26 @@ main
 {
 	background-color: orange;
 	display: flex;
-	gap: 1rem;
+	gap: 1%;
 	justify-content: space-around;
 	flex-wrap: wrap;
-	padding: 1rem;
+	padding: 1rem 0;
+}
+
+h1
+{
+	margin-bottom: 1rem;
 }
 
 section
 {
 	background-color: purple;
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
+
+	gap: 2rem;
 	padding: 0.5rem;
-	gap: 1rem;
 	width: 30%;
 }
 
@@ -70,4 +78,28 @@ figure
 {
 	background-color: lightgray;
 	text-align: center;
+}
+
+#addTask
+{
+	background-color: steelblue;
+	box-sizing: border-box;
+	border-radius: 1rem;
+	cursor: pointer;
+	margin: 1rem 20%;
+}
+
+#newListButton
+{
+	box-sizing: border-box;
+	border-radius: 5rem;
+	cursor: pointer;
+	margin: 0 10%;
+	padding: 0.5rem 0;
+	transition: all 1s;
+}
+
+#newListButton:hover
+{
+	background-color: gray;
 }
