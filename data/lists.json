@@ -1,0 +1,14 @@
+{
+  "P0001": {
+    "name": "First List",
+    "creator": "zcommon@scu.edu",
+    "members": [],
+    "incompleteItems": [
+      "Do the dishes",
+      "Do the laundry"
+    ],
+    "completeItems": [
+      "Take a shower"
+    ]
+  }
+}
