@@ -46,13 +46,20 @@ function onLoginLoad() {
     if (isset($_GET["email"])) {
         $email = $_GET["email"];
     } else {
-        echo "Improper login attempt. Must include email and password params in URL";
+        header("Location: home.php?fail=MISSING_DATA");
+        return;
     }
 
     if (isset($_GET["password"])) {
         $password = $_GET["password"];
     } else {
-        echo "Improper login attempt. Must include email and password params in URL";
+        header("Location: home.php?fail=MISSING_DATA");
+        return;
+    }
+
+    if (strlen($email) < 1 || strlen($password) < 1) {
+        header("Location: home.php?fail=MISSING_DATA");
+        return;
     }
 
     // Get user data to store to session
@@ -60,15 +67,17 @@ function onLoginLoad() {
 
     if (file_exists($userDataFile)) {
         $userData = json_decode(file_get_contents($userDataFile), true);
-        if (!array_key_exists($email, $userData)) {
-            echo "Invalid user. NEEDS TO BE HANDLED DIFFERENTLY LATER AND LINK BACK TO HOME";
+        if (!array_key_exists($email, $userData)) { // User doesn't exist
+            header("Location: home.php?fail=NO_SUCH_USER");
             return;
         }
 
         if ($userData[$email]["password"] !== $password) {
-            echo "Invalid user";
+            header("Location: home.php?fail=INCORRECT_PASSWORD");
             return;
         }
+    } else {
+        return;
     }
 
     // Creates a new php session with proper user information to be accessed by all other pages
@@ -95,13 +104,20 @@ function onRegisterLoad() {
     if (isset($_GET["email"])) {
         $email = $_GET["email"];
     } else {
-        echo "Improper register attempt. Must include email and password params in URL";
+        header("Location: home.php?fail=MISSING_DATA");
+        return;
     }
 
     if (isset($_GET["password"])) {
         $password = $_GET["password"];
     } else {
-        echo "Improper register attempt. Must include email and password params in URL";
+        header("Location: home.php?fail=MISSING_DATA");
+        return;
+    }
+
+    if (strlen($email) < 1 || strlen($password) < 1) {
+        header("Location: home.php?fail=MISSING_DATA");
+        return;
     }
 
     // Get user data
@@ -110,7 +126,7 @@ function onRegisterLoad() {
     if (file_exists($userDataFile)) {
         $userData = json_decode(file_get_contents($userDataFile), true);
         if (array_key_exists($email, $userData)) {
-            echo "User already exists. Redirect to home.php and display error contents later";
+            header("Location: home.php?fail=USER_EXISTS");
             return;
         }
 
