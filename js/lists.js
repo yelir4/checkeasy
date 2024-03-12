@@ -270,5 +270,5 @@ const sendData = (dataToSend) => {
 }
 
 const manageList = (id) => {
-	window.location.href = `/php/index.php?page=manage&id=${id}`;
+	window.location.href = `./index.php?page=manage&id=${id}`;
 }
