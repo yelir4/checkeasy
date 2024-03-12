@@ -1,13 +1,7 @@
-/* Color Vars */
-@property --backgroundColor {
-	syntax: "<color>";
-	initial-value: #E0E1DD;
-	inherits: false;
-}
-
 /** font root size 16pt */
 html
 {
+	--backgroundColor: #E0E1DD;
 	font-size: 18px;
 }
 
@@ -86,6 +80,7 @@ figure
 figure ul
 {
 	/* background-color: steelblue; */
+	overflow: hidden;
 	padding: 0 5% 0 25%;
 	text-align: left;
 }
