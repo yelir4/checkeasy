@@ -1,4 +1,5 @@
 <?php
+session_start();
 header("Content-Type: text/html");
 libxml_use_internal_errors(true);
 
