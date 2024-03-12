@@ -18,6 +18,13 @@ html *
 	padding: 0;
 }
 
+/** TODO put the dasani logo looking image here */
+body
+{
+	background-image: url(www.google.com);
+}
+
+
 header
 {
 	background-color: steelblue;
@@ -27,18 +34,21 @@ header
 }
 
 /** italicize `CheckEasy` */
+header p
+{
+	background-color: skyblue;
+	cursor: pointer;
+	padding: 1rem;
+}
+
 #title
 {
-	background-color: green;
-	cursor: pointer;
 	font-style: italic;
-	padding: 1rem;
 }
 
 /** main section (under header bar) */
 main
 {
-	background-color: darkgray;
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
@@ -72,7 +82,28 @@ figure
 	text-align: center;
 }
 
-#addTask
+/** tasks */
+figure ul
+{
+	/* background-color: steelblue; */
+	padding: 0 5% 0 25%;
+	text-align: left;
+}
+
+/** unfinished vs finished tasks */
+.unfinished
+{
+	list-style-type: circle;
+	transition: all 1s;
+}
+.finished
+{
+	color: green;
+	list-style-type: disc;
+	text-decoration:line-through;
+}
+
+#addTaskButton
 {
 	background-color: steelblue;
 	box-sizing: border-box;
