@@ -33,7 +33,7 @@ newListButton.addEventListener("click", function ()
 		if (event.keyCode === 13)
 		{
 			/** extract value from input box, sanitize */
-			let value = input.value.replace(/[^a-zA-Z0-9 ]/g, '');;
+			let value = input.value.replace(/[^a-zA-Z0-9 ]/g, '');
 
 			/** remove the text box */
 			this.remove();
