@@ -139,3 +139,27 @@ figure ul
 {
 	background-color: gray;
 }
+
+input[type="button"]{
+    padding:10px 20px;
+    width:100%;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    max-width:300px;
+}
+
+.container4{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	min-height:50vh;
+	
+}
+
+.logout{
+	margin-top:auto;
+	background-color:#4CAF50;
+    color:white;
+}
