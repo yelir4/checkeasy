@@ -12,7 +12,12 @@
 	<!-- sticky fixed header element -->
 	<header>
 		<p id="title">CheckEasy</p>
-		<p>My Lists</p>
+		<div class="container4">
+			<p id="Lists">My Lists</p>
+			<form action="index.php" method="get">
+				<input type="button" value="Logout" class="button logout" onclick="window.location.href='../php/index.php?page=home'">
+			</form>
+		</div>
 	</header>
 
 	<!-- let's have 3 columns!!! each of which displays flex downwards -->
@@ -32,11 +37,5 @@
 			<!-- inserted by base.js -->
 		</section>
 	</main>
-	<div class="container4">
-		<form action="index.php" method="get">
-			<input type="button" value="logout" class="button logout" onclick="window.location.href='../php/index.php?page=home'">
-		</form>
-	</div>
-
 </body>
 </html>
