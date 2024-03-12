@@ -2,6 +2,7 @@
 html
 {
 	--backgroundColor: #E0E1DD;
+	--green: #03C03C;
 	font-size: 18px;
 }
 
@@ -67,6 +68,7 @@ h1
 {
 }
 
+/** owner email paragraph */
 #ownerP
 {
 	margin-bottom: 1rem;
@@ -109,6 +111,17 @@ figure ul
 	border-radius: 1rem;
 	cursor: pointer;
 	margin: 1rem 20%;
+	padding: 0.2rem;
+}
+
+#manageButton
+{
+	background-color: var(--green);
+	border-radius: 3rem;
+	box-sizing: border-box;
+	cursor: pointer;
+	margin: 0.5rem 30%;
+	padding: .5rem;
 }
 
 #newListButton

@@ -26,6 +26,8 @@ newListButton.addEventListener("click", function ()
 	const section = sections[(currentSection++ % 3)];
 	section.append(newList);
 
+	input.focus();
+
 	/** add event listener for text input */
 	input.addEventListener("keypress", function(event)
 	{
