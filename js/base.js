@@ -12,12 +12,55 @@ newListButton.addEventListener("click", function ()
 {
 	const newList = document.createElement("figure");
 	const listTitle = document.createElement("h1");
-	listTitle.innerHTML = ("your list");
+	listTitle.innerHTML = "New list";
 
+	const tasks = document.createElement("ul");
+	const task = document.createElement("li");
+	task.classList.add("unfinished");
+	task.innerHTML = "i like ice creamc";
+	task.addEventListener("click", toggleFinished);
+
+	const addTaskButton = document.createElement("p");
+	addTaskButton.setAttribute("id", "addTaskButton");
+	addTaskButton.innerHTML = "add task";
+	addTaskButton.addEventListener("click", addTask);
+
+	const manageButton = document.createElement("p");
+	manageButton.setAttribute("id", "manageButton");
+	manageButton.innerHTML = "Manage";
+
+	/** structure */
 	newList.append(listTitle);
+	tasks.append(task);
+	newList.append(tasks);
+	newList.append(addTaskButton);
+	newList.append(manageButton);
 
 	const section = sections[(currentSection++ % 3)];
 	section.append(newList);
 	console.log(typeof(section));
-	console.log("hello you stinky people");
+
+	/** move newListButton */
+	newListButton.remove();
+	sections[currentSection % 3].append(newListButton);
 });
+
+/** add task to given list */
+function addTask ()
+{
+	const tasks = this.parentElement.querySelector("ul");
+
+	const task = document.createElement("li");
+	task.innerHTML = "hiya";
+	task.classList.add("unfinished");
+	task.innerHTML = "i like ice creamc";
+	task.addEventListener("click", toggleFinished);
+
+	tasks.append(task);
+}
+
+/** toggle a given task finished */
+function toggleFinished ()
+{
+	this.classList.toggle("finished");
+}

@@ -18,56 +18,111 @@ html *
 	padding: 0;
 }
 
-nav
+/** TODO put the dasani logo looking image here */
+body
+{
+	background-image: url(www.google.com);
+}
+
+
+header
 {
 	background-color: steelblue;
 	display: flex;
 	justify-content: space-between;
+	padding: 0 2rem;
 }
 
-/** lets make CheckEasy italicized !! : ) */
-nav p
+/** italicize `CheckEasy` */
+header p
 {
-	background-color: green;
+	background-color: skyblue;
 	cursor: pointer;
-	font-style: italic;
 	padding: 1rem;
 }
 
-header span
+#title
 {
-	display: flex;
-	gap: 2rem;
-	text-wrap: nowrap;
+	font-style: italic;
 }
 
-header span p
-{
-	font-style: normal;
-}
-
+/** main section (under header bar) */
 main
 {
-	background-color: orange;
 	display: flex;
-	gap: 1rem;
 	justify-content: space-around;
 	flex-wrap: wrap;
-	padding: 1rem;
+	padding: 1rem 0;
 }
 
+/** 3 sections populated by lists */
 section
 {
-	background-color: purple;
+	/* background-color: purple; */
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
+
+	gap: 2rem;
 	padding: 0.5rem;
-	gap: 1rem;
 	width: 30%;
 }
 
+/** list titles */
+h1
+{
+	margin-bottom: 1rem;
+}
+
+/** per list */
 figure
 {
 	background-color: lightgray;
+	border-radius: 1rem;
 	text-align: center;
+}
+
+/** tasks */
+figure ul
+{
+	/* background-color: steelblue; */
+	padding: 0 5% 0 25%;
+	text-align: left;
+}
+
+/** unfinished vs finished tasks */
+.unfinished
+{
+	list-style-type: circle;
+	transition: all 1s;
+}
+.finished
+{
+	color: green;
+	list-style-type: disc;
+	text-decoration:line-through;
+}
+
+#addTaskButton
+{
+	background-color: steelblue;
+	box-sizing: border-box;
+	border-radius: 1rem;
+	cursor: pointer;
+	margin: 1rem 20%;
+}
+
+#newListButton
+{
+	box-sizing: border-box;
+	border-radius: 5rem;
+	cursor: pointer;
+	margin: 0 10%;
+	padding: 0.5rem 0;
+	transition: all 1s;
+}
+
+#newListButton:hover
+{
+	background-color: gray;
 }
