@@ -26,8 +26,8 @@ header
 	padding: 0 2rem;
 }
 
-/** lets make CheckEasy italicized !! : ) */
-header p
+/** italicize `CheckEasy` */
+#title
 {
 	background-color: green;
 	cursor: pointer;
@@ -35,36 +35,20 @@ header p
 	padding: 1rem;
 }
 
-header span
-{
-	display: flex;
-	gap: 2rem;
-	text-wrap: nowrap;
-}
-
-header span p
-{
-	font-style: normal;
-}
-
+/** main section (under header bar) */
 main
 {
 	background-color: orange;
 	display: flex;
-	gap: 1%;
 	justify-content: space-around;
 	flex-wrap: wrap;
 	padding: 1rem 0;
 }
 
-h1
-{
-	margin-bottom: 1rem;
-}
-
+/** 3 sections populated by lists */
 section
 {
-	background-color: purple;
+	/* background-color: purple; */
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
@@ -74,9 +58,17 @@ section
 	width: 30%;
 }
 
+/** list titles */
+h1
+{
+	margin-bottom: 1rem;
+}
+
+/** per list */
 figure
 {
 	background-color: lightgray;
+	border-radius: 1rem;
 	text-align: center;
 }
 
