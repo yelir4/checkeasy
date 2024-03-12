@@ -1,4 +1,4 @@
-console.log("base.js loaded ...");
+console.log("lists.js loaded ...");
 
 /** document selectors */
 var newListButton = document.getElementById("newListButton");
@@ -27,6 +27,13 @@ newListButton.addEventListener("click", function ()
 	section.append(newList);
 
 	input.focus();
+
+	/** Set proper ID */
+	fetch("../php/getNextListID.php")
+		.then(res => res.json())
+		.then(data => {
+			newList.id = data.id;
+		});
 
 	/** add event listener for text input */
 	input.addEventListener("keypress", function(event)
@@ -74,6 +81,18 @@ newListButton.addEventListener("click", function ()
 			addTaskDiv.append(addTaskButton);
 			newList.append(addTaskDiv);
 			newList.append(manageButton);
+
+			// Send new list data to server
+			const listId = newList.id;
+			console.log(listId);
+
+			const dataToSend = JSON.stringify({
+				type: "createList",
+				listName: value,
+				listId: newList.id
+			});
+
+			sendData(dataToSend);
 		}
 	});
 });
@@ -96,6 +115,8 @@ function addTask ()
 	{
 		if (event.keyCode === 13)
 		{
+			const projectId = addTaskDiv.parentElement.id;
+
 			/** extract value from input box, sanitize */
 			let value = input.value.replace(/[^a-zA-Z0-9 ]/g, '');
 
@@ -105,10 +126,15 @@ function addTask ()
 			const task = document.createElement("li");
 			task.innerHTML = value;
 			task.classList.add("unfinished");
-			task.addEventListener("click", toggleFinished);
+			task.addEventListener("click", () => {
+				toggleFinished(task);
+				toggleTaskOnBackend(projectId, value);
+			});
 
 			addTaskDiv.append(addTaskButton);
 			tasks.append(task);
+
+			addTaskToBackendList(projectId, value);
 		}
 	});
 
@@ -126,7 +152,43 @@ function enterTask (input)
 }
 
 /** toggle a given task finished */
-function toggleFinished ()
+function toggleFinished(element)
 {
-	this.classList.toggle("finished");
+	element.classList.toggle("finished");
+}
+
+const addTaskToBackendList = (id, task) => {
+	const dataToSend = JSON.stringify({
+		type: "addTask",
+		listId: id,
+		task: task
+	});
+
+	sendData(dataToSend);
+}
+
+const toggleTaskOnBackend = (id, task) => {
+	const dataToSend = JSON.stringify({
+		type: "toggleTask",
+		listId: id,
+		task: task
+	});
+
+	sendData(dataToSend);
+}
+
+const sendData = (dataToSend) => {
+	const xhr = new XMLHttpRequest();
+
+	xhr.open('POST', "../php/dataTransfer.php", true);
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.onload = function() {
+		if (xhr.status >= 200 && xhr.status < 300) {
+			console.log('Data sent successfully.');
+			// Handle the response from the PHP script if needed
+		} else {
+			console.error('Request failed with status:', xhr.status);
+		}
+	};
+	xhr.send(dataToSend);
 }

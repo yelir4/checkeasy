@@ -142,10 +142,11 @@ function onRegisterLoad() {
         file_put_contents($userDataFile, $updatedJson);
 
         // Creates a new php session with proper user information to be accessed by all other pages
+        ini_set('session.cookie_secure', '0');
         session_start();
 
         // Add proper user information to session
-        $_SESSION["userInfo"] = $newUserObject;
+        $_SESSION["userInfo"] = $userData[$email];
 
         // Redirect to lists page
         onListsLoad();
