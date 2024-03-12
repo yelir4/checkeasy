@@ -38,7 +38,7 @@ header
 /** main section (under header bar) */
 main
 {
-	background-color: orange;
+	background-color: darkgray;
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
