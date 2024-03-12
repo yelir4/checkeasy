@@ -153,13 +153,18 @@ input[type="button"]{
 	display:flex;
 	justify-content:center;
 	align-items:center;
-	flex-direction:column;
-	min-height:50vh;
+	background-color:skyblue;
+	border-right:solid;
 	
 }
 
 .logout{
-	margin-top:auto;
-	background-color:#4CAF50;
-    color:white;
+	background:none;
+	/* background-color: skyblue; */
+    color:black;
+}
+
+#Lists{
+	border-right:solid;
+	border-left:solid;
 }
