@@ -33,4 +33,10 @@ if ($data["type"] == "createList") {
     $listData[$data["listId"]]["items"][$data["task"]] = !$listData[$data["listId"]]["items"][$data["task"]];
 
     file_put_contents($listDataFile, json_encode($listData, JSON_PRETTY_PRINT));
+} else if ($data["type"] == "removeMember") {
+    $removeIndex = array_search($data["member"], $listData[$data["listId"]]["members"]);
+    unset($listData[$data["listId"]]["members"][$removeIndex]);
+    $listData[$data["listId"]]["members"] = array_values($listData[$data["listId"]]["members"]);
+
+    file_put_contents($listDataFile, json_encode($listData, JSON_PRETTY_PRINT));
 }
