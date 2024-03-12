@@ -10,9 +10,11 @@ $currentUser = $_SESSION["userInfo"]["email"];
 
 if (file_exists($listDataFile)) {
     $listData = json_decode(file_get_contents($listDataFile), true);
-    foreach ($listData as $list) {
-        if ($list["creator"] == $currentUser || in_array($currentUser, $list)) {
-            array_push($userLists, $list);
+    foreach ($listData as $id=>$list) {
+        if ($id !== "nextId") {
+            if ($list["creator"] == $currentUser || in_array($currentUser, $list["members"])) {
+                array_push($userLists, $list);
+            }
         }
     }
 

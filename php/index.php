@@ -1,4 +1,6 @@
 <?php
+ini_set('session.cookie_secure', '0');
+session_start();
 header("Content-Type: text/html");
 libxml_use_internal_errors(true);
 
@@ -8,6 +10,8 @@ $pages = array(
     "lists"=>"onListsLoad",
     "login"=>"onLoginLoad",
     "register"=>"onRegisterLoad",
+    "logout"=>"onLogoutLoad",
+    "manage"=>"onManageLoad"
 );
 
 // Get page type to load <-- Every page will route back here
@@ -25,6 +29,10 @@ if (isset($_GET["page"])) {
  * @return void Ignore
  */
 function onHomeLoad() {
+    if (isset($_SESSION["userInfo"])) {
+        header("Location: lists.php");
+        return;
+    }
     header("Location: home.php");
 }
 
@@ -142,13 +150,25 @@ function onRegisterLoad() {
         file_put_contents($userDataFile, $updatedJson);
 
         // Creates a new php session with proper user information to be accessed by all other pages
-        ini_set('session.cookie_secure', '0');
-        session_start();
 
         // Add proper user information to session
         $_SESSION["userInfo"] = $userData[$email];
 
         // Redirect to lists page
         onListsLoad();
+    }
+}
+
+function onLogoutLoad() {
+    session_destroy();
+    header("Location: home.php");
+}
+
+function onManageLoad() {
+    if (isset($_GET["id"])) {
+        $id = $_GET["id"];
+        header("Location: manage.php?id=" . $id);
+    } else {
+        header("Location: lists.php");
     }
 }
