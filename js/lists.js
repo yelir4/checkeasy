@@ -59,7 +59,12 @@ newListButton.addEventListener("click", function ()
 
 			const ownerP = document.createElement("p");
 			ownerP.setAttribute("id", "ownerP");
-			ownerP.innerHTML = "Owner: test@gmail.com";
+			/** Get current user from backend */
+			fetch("../php/getCurrentUser.php")
+				.then(res => res.json())
+				.then(data => {
+					ownerP.innerHTML = `Owner: ${data.user}`;
+				});
 
 			/** ul list */
 			const tasks = document.createElement("ul");
@@ -73,6 +78,9 @@ newListButton.addEventListener("click", function ()
 			const manageButton = document.createElement("p");
 			manageButton.setAttribute("id", "manageButton");
 			manageButton.innerHTML = "Manage";
+			manageButton.addEventListener("click", () => {
+				manageList(newList.id);
+			});
 
 			/** structure */
 			newList.append(listTitle);
@@ -96,6 +104,74 @@ newListButton.addEventListener("click", function ()
 		}
 	});
 });
+
+/** Include lists that already exist */
+fetch("../php/getLists.php")
+	.then(res => res.json())
+	.then(data => {
+		data.lists.forEach((list) => {
+			createList(list);
+		});
+	});
+
+/** Create new list element */
+function createList(data) {
+	const newList = document.createElement("figure");
+	newList.id = data.id;
+
+	/** create list title */
+	const listTitle = document.createElement("h1");
+	listTitle.innerHTML = data.name;
+
+	/** move newListButton */
+	newListButton.remove();
+	const section = sections[(currentSection++ % 3)];
+	section.append(newList);
+	sections[currentSection % 3].append(newListButton);
+
+	/** set author */
+	const ownerP = document.createElement("p");
+	ownerP.setAttribute("id", "ownerP");
+	ownerP.innerHTML = `Owner: ${data.creator}`;
+
+	/** ul list */
+	const tasks = document.createElement("ul");
+
+	const addTaskDiv = document.createElement("div");
+	const addTaskButton = document.createElement("p");
+	addTaskButton.setAttribute("id", "addTaskButton");
+	addTaskButton.innerHTML = "add task";
+	addTaskButton.addEventListener("click", addTask);
+
+	const manageButton = document.createElement("p");
+	manageButton.setAttribute("id", "manageButton");
+	manageButton.innerHTML = "Manage";
+	manageButton.addEventListener("click", () => {
+		manageList(newList.id);
+	});
+
+	/** append existing tasks */
+	for (const [key, isComplete] of Object.entries(data.items)) {
+		const task = document.createElement("li");
+		task.innerHTML = key;
+		task.classList.add("unfinished");
+		if (isComplete) task.classList.add("finished");
+		task.addEventListener("click", () => {
+			toggleFinished(task);
+			toggleTaskOnBackend(data.id, key);
+		});
+
+		tasks.append(task);
+	}
+
+	/** structure */
+	newList.append(listTitle);
+	newList.append(ownerP);
+	newList.append(tasks);
+	addTaskDiv.append(addTaskButton);
+	newList.append(addTaskDiv);
+	newList.append(manageButton);
+}
 
 /** add task to given list */
 function addTask ()
@@ -191,4 +267,8 @@ const sendData = (dataToSend) => {
 		}
 	};
 	xhr.send(dataToSend);
+}
+
+const manageList = (id) => {
+	window.location.href = `/php/index.php?page=manage&id=${id}`;
 }
