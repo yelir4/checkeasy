@@ -40,12 +40,12 @@ input[type="email"],input[type="password"]{
     margin:10px 0;
     padding:10px;
     width:50vh;
-    border:1px solid ccccc;
+    border:1px solid #cccccc;
     border-radius:5px;
 }
 
 
-input[type="submit"]{
+input[type="button"]{
     padding:10px 20px;
     margin-top:10px;
     width:100%;

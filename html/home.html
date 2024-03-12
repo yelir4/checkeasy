@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <script defer src="../js/base.js"></script>
+    <script defer src="../js/home.js"></script>
     <title>CheckEasy: Home</title>
 </head>
 <body>
@@ -17,10 +19,10 @@
             <p> The #1 List Management system</p>
             <form action="index.php" method="get">
                 <input type="hidden" name="page" value="login">
-                <input type="email" name="email" placeholder="email" required>
-                <input type="password" name="password" placeholder="password" required>
-                <input type="button" value="login" class="button login-btn" onclick="window.location.href='../php/index.php?page=login&email=user&password=password';">
-                <input type="button" value="Register" class="button register-btn" onclick="window.location.href='../php/index.php?page=register&email=user&password=password';">
+                <input id="email" type="email" name="email" placeholder="Email" required>
+                <input id="password" type="password" name="password" placeholder="Password" required>
+                <input type="button" value="Login" class="button login-btn">
+                <input type="button" value="Register" class="button register-btn">
             </form>
         </div>
     </main>
