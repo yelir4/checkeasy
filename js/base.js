@@ -48,6 +48,11 @@ newListButton.addEventListener("click", function ()
 			newListButton.remove();
 			sections[currentSection % 3].append(newListButton);
 
+			const ownerP = document.createElement("p");
+			ownerP.setAttribute("id", "ownerP");
+			ownerP.innerHTML = "Owner: test@gmail.com";
+
+			/** ul list */
 			const tasks = document.createElement("ul");
 
 			const addTaskDiv = document.createElement("div");
@@ -62,6 +67,7 @@ newListButton.addEventListener("click", function ()
 
 			/** structure */
 			newList.append(listTitle);
+			newList.append(ownerP);
 			newList.append(tasks);
 			addTaskDiv.append(addTaskButton);
 			newList.append(addTaskDiv);
