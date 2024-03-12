@@ -65,9 +65,13 @@ newListButton.addEventListener("click", function ()
 
 			const manageButton = document.createElement("p");
 			manageButton.setAttribute("id", "manageButton");
+
+			/** @TODO manage link */
+			manageButton.setAttribute("onclick", "window.location.href='manage.html'");
 			manageButton.innerHTML = "Manage";
 
-			/** structure */
+
+			/** structure list */
 			newList.append(listTitle);
 			newList.append(ownerP);
 			newList.append(tasks);
@@ -117,12 +121,6 @@ function addTask ()
 
 	/** draw focus so user can type */
 	input.focus();
-}
-
-function enterTask (input)
-{
-	console.log(this.text);
-	this.remove();
 }
 
 /** toggle a given task finished */

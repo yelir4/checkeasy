@@ -1,9 +1,14 @@
 {
-  "zcommon@scu.edu": {
-    "email": "zcommon@scu.edu",
-    "password": "12345",
-    "lists": [
-      "P0001"
-    ]
-  }
+    "zcommon@scu.edu": {
+        "email": "zcommon@scu.edu",
+        "password": "12345",
+        "lists": [
+            "P0001"
+        ]
+    },
+    "rguioguio@scu.edu": {
+        "email": "rguioguio@scu.edu",
+        "password": "123",
+        "lists": []
+    }
 }
