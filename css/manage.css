@@ -1,0 +1,89 @@
+html
+{
+	--backgroundColor: #E0E1DD;
+	--green: #03C03C;
+	font-size: 18px;
+}
+/** remove all default element padding, margins */
+html *
+{
+	margin: 0;
+	padding: 0;
+}
+
+body
+{
+	background-image: url(360_F_542731787_npIDENXs9NMkl1mtyHKj8De2WBL2vnFW.jpg);
+	background-size: cover;
+}
+
+
+header
+{
+	background-color: steelblue;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 2rem;
+}
+
+/** italicize `CheckEasy` */
+header p
+{
+	background-color: skyblue;
+	cursor: pointer;
+	padding: 1rem;
+}
+
+#title
+{
+	font-style: italic;
+}
+.main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+.container{
+    border:solid;
+    border-radius:10px;
+    margin:10vh;
+    text-align:center;
+    max-width:200vh;
+}
+
+.container1{
+    border:solid;
+    border-radius:10px;
+    margin:10vh;
+    text-align:center;
+    max-width:200vh;
+
+}
+
+.container2{
+    display:flex;
+    align-items:Center;
+    justify-content:center;
+}
+.Save{
+    background-color:#4CAF50;
+    color:white;
+    margin-bottom:10px;
+}
+
+.Cancel{
+    background-color:#f0f0f0;
+    color:#333333;
+}
+
+input[type="button"]{
+    padding:10px 20px;
+    margin-top:10px;
+    width:100%;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    max-width:300px;
+}
