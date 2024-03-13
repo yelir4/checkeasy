@@ -14,7 +14,9 @@ html *
 body
 {
 	background-image: url(360_F_542731787_npIDENXs9NMkl1mtyHKj8De2WBL2vnFW.jpg);
-	background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 
@@ -71,11 +73,13 @@ header p
     background-color:#4CAF50;
     color:white;
     margin-bottom:10px;
+    user-select: none;
 }
 
 .Cancel{
     background-color:#f0f0f0;
     color:#333333;
+    user-select: none;
 }
 
 input[type="button"]{
@@ -86,4 +90,10 @@ input[type="button"]{
     border-radius:5px;
     cursor:pointer;
     max-width:300px;
+    user-select: none;
+}
+
+li {
+    cursor: pointer;
+    user-select: none;
 }

@@ -165,9 +165,20 @@ function onLogoutLoad() {
 }
 
 function onManageLoad() {
+    $listDataFile = "../data/lists.json";
+    $listData = null;
+
+    if (file_exists($listDataFile)) {
+        $listData = json_decode(file_get_contents($listDataFile), true);
+    }
+
     if (isset($_GET["id"])) {
-        $id = $_GET["id"];
-        header("Location: manage.php?id=" . $id);
+        if ($listData[$_GET["id"]]["creator"] === $_SESSION["userInfo"]["email"]) {
+            $id = $_GET["id"];
+            header("Location: manage.php?id=" . $id);
+        } else {
+            header("Location: lists.php");
+        }
     } else {
         header("Location: lists.php");
     }

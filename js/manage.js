@@ -27,6 +27,47 @@ const removeMember = async (member, id) => {
     sendData(dataToSend);
 }
 
+const addTask = (addTaskButton, id) => {
+    const addTaskDiv = addTaskButton.parentElement;
+    const tasks = addTaskDiv.parentElement.querySelector("ul");
+    addTaskButton.remove();
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.name = "input";
+    input.placeholder = "...";
+
+    input.addEventListener("keypress", function(event)
+    {
+        if (event.keyCode === 13)
+        {
+
+            /** extract value from input box, sanitize */
+            let value = input.value.replace(/[^a-zA-Z0-9 ]/g, '');
+
+            /** remove the text box */
+            this.remove();
+
+            const task = document.createElement("li");
+            task.innerHTML = value;
+            task.classList.add("unfinished");
+            task.addEventListener("click", () => {
+                toggleFinished(task);
+                toggleTaskOnBackend(id, value);
+            });
+
+            addTaskDiv.append(addTaskButton);
+            tasks.append(task);
+
+            addTaskToBackendList(id, value);
+        }
+    });
+
+    tasks.append(input);
+
+    input.focus();
+}
+
 const appendContent = async (id) => {
     const data = await getListData(id);
     const user = await getCurrentUser();
@@ -55,7 +96,7 @@ const appendContent = async (id) => {
     const addTaskButton = document.createElement("p");
     addTaskButton.innerHTML = "Add Task";
     addTaskButton.addEventListener("click", () => {
-        addTask();
+        addTask(addTaskButton, id);
     });
 
     // Append existing tasks

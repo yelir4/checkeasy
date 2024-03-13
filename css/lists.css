@@ -17,6 +17,8 @@ html *
 body
 {
 	background-image: url(360_F_542731787_npIDENXs9NMkl1mtyHKj8De2WBL2vnFW.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 	background-size: cover;
 }
 
@@ -138,6 +140,11 @@ figure ul
 #newListButton:hover
 {
 	background-color: gray;
+}
+
+li {
+	cursor: pointer;
+	user-select: none;
 }
 
 input[type="button"]{
