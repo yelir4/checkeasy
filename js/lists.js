@@ -6,6 +6,14 @@ var sections = document.querySelectorAll("section");
 
 /** global variables */
 var currentSection = 0;
+let currentUser;
+
+// Get current user
+fetch("../php/getCurrentUser.php")
+	.then(res => res.json())
+	.then(data => {
+		currentUser = data.user;
+	})
 
 /** new event listener for `newListButton` creates new todo list */
 newListButton.addEventListener("click", function ()
@@ -170,7 +178,7 @@ function createList(data) {
 	newList.append(tasks);
 	addTaskDiv.append(addTaskButton);
 	newList.append(addTaskDiv);
-	newList.append(manageButton);
+	if (data.creator === currentUser) newList.append(manageButton);
 }
 
 /** add task to given list */

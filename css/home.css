@@ -11,9 +11,8 @@ body{
     justify-content:center;
     align-items:center;
     height:100vh;
-    background:url('360_F_542731787_npIDENXs9NMkl1mtyHKj8De2WBL2vnFW.jpg');
-    background-size:cover;
-    background-position:center;
+    background: url('360_F_542731787_npIDENXs9NMkl1mtyHKj8De2WBL2vnFW.jpg') no-repeat fixed;
+    background-size: cover;
     
 }
 
