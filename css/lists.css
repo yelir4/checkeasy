@@ -146,3 +146,32 @@ li {
 	cursor: pointer;
 	user-select: none;
 }
+
+input[type="button"]{
+    padding:10px 20px;
+    width:100%;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    max-width:300px;
+}
+
+.container4{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background-color:skyblue;
+	border-right:solid;
+	
+}
+
+.logout{
+	background:none;
+	/* background-color: skyblue; */
+    color:black;
+}
+
+#Lists{
+	border-right:solid;
+	border-left:solid;
+}
