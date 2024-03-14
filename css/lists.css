@@ -9,6 +9,7 @@ html
 /** remove all default element padding, margins */
 html *
 {
+	font-family: 'Trebuchet MS', sans-serif;
 	margin: 0;
 	padding: 0;
 }
@@ -28,20 +29,45 @@ header
 	background-color: steelblue;
 	display: flex;
 	justify-content: space-between;
+	align-content: center;
+	justify-items: center;
 	padding: 0 2rem;
 }
 
-/** italicize `CheckEasy` */
-header p
-{
-	background-color: skyblue;
-	cursor: pointer;
-	padding: 1rem;
+header figure {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0;
+	padding: 1%;
+	user-select: none;
 }
 
-#title
+/** italicize `CheckEasy` */
+header #title
 {
+	background-color: transparent;
+	color: white;
+	cursor: pointer;
+	padding: 1rem;
 	font-style: italic;
+}
+
+header #pageheader {
+	font-size: 36px;
+	font-weight: bold;
+	background-color: skyblue;
+}
+
+header #logout {
+	cursor: pointer;
+	background-color: lightgray;
+	transition: all 0.2s ease-in;
+}
+
+header #logout:hover {
+	background-color: indianred;
+	color: white;
 }
 
 /** main section (under header bar) */
@@ -66,11 +92,6 @@ section
 	width: 30%;
 }
 
-/** list titles */
-h1
-{
-}
-
 /** owner email paragraph */
 #ownerP
 {
@@ -78,20 +99,27 @@ h1
 }
 
 /** per list */
-figure
+section figure
 {
 	background-color: lightgray;
 	border-radius: 1rem;
 	text-align: center;
+	padding: 10px;
+	border-width: medium;
+	border-style: solid;
 }
 
 /** tasks */
-figure ul
+section figure ul
 {
 	/* background-color: steelblue; */
-	overflow: hidden;
-	padding: 0 5% 0 25%;
+	white-space: normal;
+	word-wrap: break-word;
 	text-align: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-left: 5vw;
 }
 
 /** unfinished vs finished tasks */
@@ -104,7 +132,7 @@ figure ul
 {
 	color: green;
 	list-style-type: disc;
-	text-decoration:line-through;
+	text-decoration: line-through;
 }
 
 #addTaskButton
@@ -147,31 +175,12 @@ li {
 	user-select: none;
 }
 
-input[type="button"]{
-    padding:10px 20px;
-    width:100%;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-    max-width:300px;
+input {
+	padding: 2%;
+	border-radius: 5rem;
+	font-size: large;
 }
 
-.container4{
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	background-color:skyblue;
-	border-right:solid;
-	
-}
-
-.logout{
-	background:none;
-	/* background-color: skyblue; */
-    color:black;
-}
-
-#Lists{
-	border-right:solid;
-	border-left:solid;
+input.taskinput {
+	font-size: medium;
 }

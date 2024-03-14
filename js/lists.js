@@ -1,129 +1,125 @@
-console.log("lists.js loaded ...");
-
 /** document selectors */
-var newListButton = document.getElementById("newListButton");
-var sections = document.querySelectorAll("section");
+let newListButton = document.getElementById("newListButton");
+let sections = document.querySelectorAll("section");
 
 /** global variables */
-var currentSection = 0;
-let currentUser;
+let currentSection = 0;
 
-// Get current user
-fetch("../php/getCurrentUser.php")
-	.then(res => res.json())
-	.then(data => {
-		currentUser = data.user;
-	})
-
-/** new event listener for `newListButton` creates new todo list */
-newListButton.addEventListener("click", function ()
-{
-	/** hide newListButton */
-	this.remove();
-
-	/** create new todo list */
-	const newList = document.createElement("figure");
-
-	/** list title input */
-	const input = document.createElement("input");
-	input.type = "text";
-	input.placeholder = "list name...";
-
-	newList.append(input);
-
-	const section = sections[(currentSection++ % 3)];
-	section.append(newList);
-
-	input.focus();
-
-	/** Set proper ID */
-	fetch("../php/getNextListID.php")
-		.then(res => res.json())
-		.then(data => {
-			newList.id = data.id;
-		});
-
-	/** add event listener for text input */
-	input.addEventListener("keypress", function(event)
-	{
-		/** if enter key pressed */
-		if (event.keyCode === 13)
-		{
-			/** extract value from input box, sanitize */
-			let value = input.value.replace(/[^a-zA-Z0-9 ]/g, '');
-
-			/** remove the text box */
-			this.remove();
-
-			/** create list title */
-			const listTitle = document.createElement("h1");
-			listTitle.innerHTML = value;
-
-			newList.append(listTitle);
-
-			/** move newListButton */
-			newListButton.remove();
-			sections[currentSection % 3].append(newListButton);
-
-			const ownerP = document.createElement("p");
-			ownerP.setAttribute("id", "ownerP");
-			/** Get current user from backend */
-			fetch("../php/getCurrentUser.php")
-				.then(res => res.json())
-				.then(data => {
-					ownerP.innerHTML = `Owner: ${data.user}`;
-				});
-
-			/** ul list */
-			const tasks = document.createElement("ul");
-
-			const addTaskDiv = document.createElement("div");
-			const addTaskButton = document.createElement("p");
-			addTaskButton.setAttribute("id", "addTaskButton");
-			addTaskButton.innerHTML = "add task";
-			addTaskButton.addEventListener("click", addTask);
-
-			const manageButton = document.createElement("p");
-			manageButton.setAttribute("id", "manageButton");
-			manageButton.innerHTML = "Manage";
-			manageButton.addEventListener("click", () => {
-				manageList(newList.id);
-			});
-
-			/** structure */
-			newList.append(listTitle);
-			newList.append(ownerP);
-			newList.append(tasks);
-			addTaskDiv.append(addTaskButton);
-			newList.append(addTaskDiv);
-			newList.append(manageButton);
-
-			// Send new list data to server
-			const listId = newList.id;
-			console.log(listId);
-
-			const dataToSend = JSON.stringify({
-				type: "createList",
-				listName: value,
-				listId: newList.id
-			});
-
-			sendData(dataToSend);
-		}
-	});
+/** Add functionality to logout button */
+const logoutButton = document.getElementById("logout");
+logoutButton.addEventListener("click", () => {
+	window.location.href="../php/index.php?page=logout";
 });
 
-/** Include lists that already exist */
-fetch("../php/getLists.php")
-	.then(res => res.json())
-	.then(data => {
-		data.lists.forEach((list) => {
-			createList(list);
-		});
+/** Async functionality for when page loads */
+async function onLoad() {
+	/** Append preexisting lists */
+	const lists = await getUserLists();
+	const currentUser = await getCurrentUser();
+	lists.forEach((list) => {
+		createList(list, currentUser)
 	});
 
+	/** new event listener for `newListButton` creates new todo list */
+	newListButton.addEventListener("click", function ()
+	{
+		/** hide newListButton */
+		this.remove();
+
+		/** create new todo list */
+		const newList = document.createElement("figure");
+
+		/** list title input */
+		const input = document.createElement("input");
+		input.type = "text";
+		input.placeholder = "list name...";
+
+		newList.append(input);
+
+		const section = sections[(currentSection++ % 3)];
+		section.append(newList);
+
+		input.focus();
+
+		/** Set proper ID */
+		fetch("../php/getNextListID.php")
+			.then(res => res.json())
+			.then(data => {
+				newList.id = data.id;
+			});
+
+		/** add event listener for text input */
+		input.addEventListener("keypress", async function(event)
+		{
+			/** if enter key pressed */
+			if (event.keyCode === 13)
+			{
+				/** extract value from input box, sanitize */
+				let value = input.value.replace(/[^a-zA-Z0-9 ]/g, '');
+
+				/** remove the text box */
+				this.remove();
+
+				/** create list title */
+				const listTitle = document.createElement("h1");
+				listTitle.innerHTML = value;
+
+				newList.append(listTitle);
+
+				/** move newListButton */
+				newListButton.remove();
+				sections[currentSection % 3].append(newListButton);
+
+				const ownerP = document.createElement("p");
+				ownerP.setAttribute("id", "ownerP");
+				/** Get current user from backend */
+				ownerP.innerHTML = `Owner ${await getCurrentUser()}`
+
+				/** ul list */
+				const tasks = document.createElement("ul");
+
+				const addTaskDiv = document.createElement("div");
+				const addTaskButton = document.createElement("p");
+				addTaskButton.setAttribute("id", "addTaskButton");
+				addTaskButton.innerHTML = "add task";
+				addTaskButton.addEventListener("click", addTask);
+
+				const manageButton = document.createElement("p");
+				manageButton.setAttribute("id", "manageButton");
+				manageButton.innerHTML = "Manage";
+				manageButton.addEventListener("click", () => {
+					manageList(newList.id);
+				});
+
+				/** structure */
+				newList.append(listTitle);
+				newList.append(ownerP);
+				newList.append(tasks);
+				addTaskDiv.append(addTaskButton);
+				newList.append(addTaskDiv);
+				newList.append(manageButton);
+
+				// Send new list data to server
+				const listId = newList.id;
+				console.log(listId);
+
+				const dataToSend = JSON.stringify({
+					type: "createList",
+					listName: value,
+					listId: newList.id
+				});
+
+				sendData(dataToSend);
+			}
+		});
+	});
+}
+
+/** Begin onload function */
+onLoad();
+
 /** Create new list element */
-function createList(data) {
+async function createList(data, currentUser) {
 	const newList = document.createElement("figure");
 	newList.id = data.id;
 
@@ -159,7 +155,7 @@ function createList(data) {
 	});
 
 	/** append existing tasks */
-	for (const [key, isComplete] of Object.entries(data.items)) {
+	for await (const [key, isComplete] of Object.entries(data.items)) {
 		const task = document.createElement("li");
 		task.innerHTML = key;
 		task.classList.add("unfinished");
@@ -190,6 +186,7 @@ function addTask ()
 	this.remove();
 
 	const input = document.createElement("input");
+	input.classList.add("taskinput");
 	input.type = "text";
 	input.name = "input";
 	input.placeholder = "...";
@@ -227,12 +224,6 @@ function addTask ()
 
 	/** draw focus so user can type */
 	input.focus();
-}
-
-function enterTask (input)
-{
-	console.log(this.text);
-	this.remove();
 }
 
 const manageList = (id) => {

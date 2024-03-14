@@ -1,32 +1,3 @@
-/**
- * Use this function to get a JSON object of a list based on ID
- * @param id The id of the list to fetch
- * @returns {Promise<void>} JSON object
- */
-const getListData = async (id) => {
-    const res = await fetch("../php/getLists.php");
-    const data = await res.json();
-    return data.lists.find((list) => {
-        return list.id === id;
-    });
-}
-
-const getCurrentUser = async () => {
-    const res = await fetch("../php/getCurrentUser.php");
-    const data = await res.json();
-    return data.user;
-}
-
-const removeMember = async (member, id) => {
-    const dataToSend = JSON.stringify({
-        type: "removeMember",
-        listId: id,
-        member: member
-    });
-
-    sendData(dataToSend);
-}
-
 const addTask = (addTaskButton, id) => {
     const addTaskDiv = addTaskButton.parentElement;
     const tasks = addTaskDiv.parentElement.querySelector("ul");
@@ -126,26 +97,19 @@ const appendContent = async (id) => {
 
     data.members.forEach((member) => {
         if (member !== user) {
-            const memberDiv = document.createElement("div");
-
-            const deleteMemberButton = document.createElement("p");
-            deleteMemberButton.textContent = "x";
-            deleteMemberButton.addEventListener("click", async () => {
-                await removeMember(member, data.id);
-                memberDiv.remove();
-            });
-
             const memberDisplay = document.createElement("p");
             memberDisplay.textContent = member;
+            memberDisplay.addEventListener("click", async () => {
+                await removeMember(member, data.id);
+                memberDisplay.remove();
+            });
 
-            memberDiv.appendChild(deleteMemberButton);
-            memberDiv.appendChild(memberDisplay);
-            shareContainer.append(memberDiv);
+            shareContainer.append(memberDisplay);
         }
     });
 }
 
-// Get proper list
+// Get proper list from URL params
 const searchParams = new URLSearchParams(window.location.search);
 let listId = null;
 if (searchParams.has("id")) {
