@@ -48,21 +48,22 @@ header p
 }
 
 
-.container{
+#listcontainer{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    margin:10vh;
     border:solid;
     border-radius:10px;
-    margin:10vh;
     text-align:center;
-    max-width:200vh;
 }
 
-.container1{
+#sharecontainer{
+    margin:10vh;
     border:solid;
     border-radius:10px;
-    margin:10vh;
     text-align:center;
-    max-width:200vh;
-
 }
 
 .container2{
@@ -77,11 +78,6 @@ header p
     user-select: none;
 }
 
-.Cancel{
-    background-color:#f0f0f0;
-    color:#333333;
-    user-select: none;
-}
 
 input[type="button"]{
     padding:10px 20px;
@@ -97,4 +93,63 @@ input[type="button"]{
 li {
     cursor: pointer;
     user-select: none;
+}
+
+.unfinished
+{
+	list-style-type: circle;
+	transition: all 1s;
+}
+.finished
+{
+	color: green;
+	list-style-type: disc;
+	text-decoration: line-through;
+}
+
+#listcontainer ul li{
+    padding-top:1vh;
+    padding-bottom:1vh;
+}
+
+#listcontainer ul li:hover{
+    color:green;
+}
+
+#listcontainer #ownerP:hover{
+    color:black;
+}
+
+#listcontainer #ownerP{
+    border:none;
+}
+
+#listcontainer p:hover{
+    color:blue;
+    cursor:pointer;
+
+}
+
+#listcontainer p{
+    border:solid;
+    padding:0.5vh;
+    border-radius:5px;
+}
+
+
+
+#sharecontainer ul {
+    border:solid;
+}
+
+#sharecontainer p{
+    padding-top:1vh;
+    padding-bottom:1vh;
+}
+
+#sharecontainer p:hover{
+    color:red;
+    cursor:pointer;
+    text-decoration: line-through;
+
 }
