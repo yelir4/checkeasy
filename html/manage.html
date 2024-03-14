@@ -4,27 +4,31 @@
     <meta charset="UTF-8">
     <title>CheckEasy: Home</title>
 
-    <link rel="stylesheet" type="text/css" href="../css/manage.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../css/base.css">
+    <link rel="stylesheet" type="text/css" href="../css/manage.css" />
     <script defer src="../js/base.js"></script>
     <script defer src="../js/manage.js"></script>
 </head>
 <body>
     <header>
-		<p id="title">CheckEasy</p>
-		<p id="mylists">My Lists</p>
-	</header>
+        <figure id="title"><p>CheckEasy</p></figure>
+        <figure id="pageheader"><p>Manage List</p></figure>
+        <figure id="logout"><p>Logout</p></figure>
+    </header>
     <main>
         <div class="container" id="listcontainer">
             
         </div>
         <div class="container" id="sharecontainer">
             <h2>Shared With</h2>
+            <div id="shareusers"></div>
+            <div id="addusers"></div>
         </div>
         <div class="container2">
             <form action="index.php" method="get">
-                <input type="button" value="Done" class="button Save" onclick="window.location.href='../php/index.php?page=lists'">
+                <input type="button" value="Done" class="button save" onclick="window.location.href='../php/index.php?page=lists'">
             </form>
         </div>
     </main>
-
+</body>
 </html>

@@ -38,8 +38,18 @@ const toggleTaskOnBackend = (id, task) => {
 }
 
 /**
+ * Returns an array of all users
+ * @returns {Promise<Array>} Array of all users
+ */
+const getAllUsers = async () => {
+    const res = await fetch("../php/getUsers.php");
+    const data = await res.json();
+    return data.users;
+}
+
+/**
  * Returns an array of all lists that pertain to a user
- * @returns {Promise<*>} User lists, whether those be created or shared to the user
+ * @returns {Promise<Object>} User lists, whether those be created or shared to the user
  */
 const getUserLists = async () => {
     const res = await fetch("../php/getLists.php");
@@ -78,6 +88,16 @@ const getCurrentUser = async () => {
 const removeMember = async (member, id) => {
     const dataToSend = JSON.stringify({
         type: "removeMember",
+        listId: id,
+        member: member
+    });
+
+    sendData(dataToSend);
+}
+
+const addMember = async (member, id) => {
+    const dataToSend = JSON.stringify({
+        type: "addMember",
         listId: id,
         member: member
     });

@@ -39,4 +39,8 @@ if ($data["type"] == "createList") {
     $listData[$data["listId"]]["members"] = array_values($listData[$data["listId"]]["members"]);
 
     file_put_contents($listDataFile, json_encode($listData, JSON_PRETTY_PRINT));
+} else if ($data["type"] == "addMember") {
+    array_push($listData[$data["listId"]]["members"], $data["member"]);
+
+    file_put_contents($listDataFile, json_encode($listData, JSON_PRETTY_PRINT));
 }
