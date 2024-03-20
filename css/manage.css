@@ -58,13 +58,18 @@ body
     display:flex;
     align-items:center;
     justify-content:center;
+    text-align: center;
 }
 
 .save{
-    background-color:#4CAF50;
-    color:white;
-    margin-bottom:10px;
-    user-select: none;
+    background-color: var(--green);
+    border-radius: 3rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: .5rem;
+    font-weight: bold;
+    font-size: large;
+    margin: 0;
 }
 
 
@@ -148,6 +153,7 @@ li {
 }
 
 #adduser:hover {
+    scale: 1.15;
     background-color: cornflowerblue;
 }
 
@@ -163,10 +169,19 @@ li {
 
 #addtaskbutton:hover {
     background-color: cornflowerblue;
+    scale: 1.15;
 }
 
-#newuserinput {
+#newuserinput, #newtaskinput {
     padding: 1%;
     border-radius: 1rem;
     font-size: medium;
+}
+
+#newtaskinput {
+    padding: 2%;
+}
+
+span {
+    margin: 2%;
 }

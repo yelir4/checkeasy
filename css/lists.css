@@ -98,6 +98,10 @@ section figure ul
 	padding: 0.2rem;
 }
 
+#addTaskButton, #addTaskButton *, #manageButton, #manageButton * {
+	transition: all 0.3s ease-in;
+}
+
 #manageButton
 {
 	background-color: var(--green);
@@ -106,6 +110,10 @@ section figure ul
 	cursor: pointer;
 	margin: 0.5rem 30%;
 	padding: .5rem;
+}
+
+#addTaskButton:hover, #manageButton:hover {
+	scale: 1.15;
 }
 
 #newListButton
@@ -121,6 +129,7 @@ section figure ul
 #newListButton:hover
 {
 	background-color: gray;
+	scale: 1.15;
 }
 
 li {

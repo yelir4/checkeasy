@@ -5,14 +5,12 @@
         "name": "test",
         "creator": "zcommon@scu.edu",
         "members": [
-            "zcommon@scu.edu",
-            "john",
-            "steve",
-            "tim"
+            "zcommon@scu.edu"
         ],
         "items": {
             "1234": true,
-            "7869": true
+            "7869": false,
+            "testing": false
         }
     },
     "P2": {
@@ -38,7 +36,7 @@
         "items": {
             "another one": false,
             "test": true,
-            "another test": false
+            "another test": true
         }
     },
     "P4": {
@@ -95,7 +93,10 @@
         "members": [
             "zcommon@scu.edu"
         ],
-        "items": []
+        "items": {
+            "test": false,
+            "test2": true
+        }
     },
     "P11": {
         "id": "P11",
