@@ -20,23 +20,6 @@ body
     background-size: cover;
 }
 
-
-header
-{
-	background-color: steelblue;
-	display: flex;
-	justify-content: space-between;
-	padding: 0 2rem;
-}
-
-/** italicize `CheckEasy` */
-header p
-{
-	background-color: skyblue;
-	cursor: pointer;
-	padding: 1rem;
-}
-
 #title
 {
 	font-style: italic;
@@ -57,6 +40,8 @@ header p
     border:solid;
     border-radius:10px;
     text-align:center;
+    background-color: lightgray;
+    padding: 2%;
 }
 
 #sharecontainer{
@@ -64,18 +49,27 @@ header p
     border:solid;
     border-radius:10px;
     text-align:center;
+    background-color: lightgray;
+    padding: 2%;
+    margin-bottom: 2vh;
 }
 
 .container2{
     display:flex;
-    align-items:Center;
+    align-items:center;
     justify-content:center;
+    text-align: center;
 }
-.Save{
-    background-color:#4CAF50;
-    color:white;
-    margin-bottom:10px;
-    user-select: none;
+
+.save{
+    background-color: var(--green);
+    border-radius: 3rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: .5rem;
+    font-weight: bold;
+    font-size: large;
+    margin: 0;
 }
 
 
@@ -124,32 +118,70 @@ li {
     border:none;
 }
 
-#listcontainer p:hover{
-    color:blue;
-    cursor:pointer;
-
-}
-
-#listcontainer p{
-    border:solid;
-    padding:0.5vh;
-    border-radius:5px;
-}
-
-
-
-#sharecontainer ul {
-    border:solid;
-}
-
-#sharecontainer p{
+#sharecontainer p {
     padding-top:1vh;
     padding-bottom:1vh;
 }
 
-#sharecontainer p:hover{
+#shareusers {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    gap: 3vw;
+}
+
+#shareusers p:hover{
     color:red;
     cursor:pointer;
     text-decoration: line-through;
+}
 
+#addusers {
+    display: flex;
+    justify-content: center;
+}
+
+#adduser {
+    padding: 2%;
+    background-color: steelblue;
+    border-radius: 1rem;
+    width: 5vw;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    margin-top: 1%;
+}
+
+#adduser:hover {
+    scale: 1.15;
+    background-color: cornflowerblue;
+}
+
+#addtaskbutton {
+    background-color: steelblue;
+    border-style: none;
+    padding: 1%;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin-top: 2%;
+    transition: all 0.3s ease-in;
+}
+
+#addtaskbutton:hover {
+    background-color: cornflowerblue;
+    scale: 1.15;
+}
+
+#newuserinput, #newtaskinput {
+    padding: 1%;
+    border-radius: 1rem;
+    font-size: medium;
+}
+
+#newtaskinput {
+    padding: 2%;
+}
+
+span {
+    margin: 2%;
 }

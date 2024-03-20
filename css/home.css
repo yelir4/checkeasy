@@ -17,6 +17,13 @@ body{
     
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .container{
     background-color:#ffffff;
     border-radius:25px;
@@ -24,7 +31,6 @@ body{
     padding:40px;
     text-align:center;
     box-sizing:border-box;
-    max-width:100vh;
 }
 
 h1{
@@ -39,7 +45,7 @@ p{
 input[type="email"],input[type="password"]{
     margin:10px 0;
     padding:10px;
-    width:50vh;
+    width:50vw;
     border:1px solid #cccccc;
     border-radius:5px;
 }
@@ -69,4 +75,8 @@ input[type="button"]{
 .notification{
     color:#4CAF50;
     margin-top:1.5em;
+}
+
+#email, #password {
+    width: 30vw;
 }

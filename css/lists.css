@@ -23,53 +23,6 @@ body
 	background-size: cover;
 }
 
-
-header
-{
-	background-color: steelblue;
-	display: flex;
-	justify-content: space-between;
-	align-content: center;
-	justify-items: center;
-	padding: 0 2rem;
-}
-
-header figure {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 0;
-	padding: 1%;
-	user-select: none;
-}
-
-/** italicize `CheckEasy` */
-header #title
-{
-	background-color: transparent;
-	color: white;
-	cursor: pointer;
-	padding: 1rem;
-	font-style: italic;
-}
-
-header #pageheader {
-	font-size: 36px;
-	font-weight: bold;
-	background-color: skyblue;
-}
-
-header #logout {
-	cursor: pointer;
-	background-color: lightgray;
-	transition: all 0.2s ease-in;
-}
-
-header #logout:hover {
-	background-color: indianred;
-	color: white;
-}
-
 /** main section (under header bar) */
 main
 {
@@ -145,6 +98,10 @@ section figure ul
 	padding: 0.2rem;
 }
 
+#addTaskButton, #addTaskButton *, #manageButton, #manageButton * {
+	transition: all 0.3s ease-in;
+}
+
 #manageButton
 {
 	background-color: var(--green);
@@ -153,6 +110,10 @@ section figure ul
 	cursor: pointer;
 	margin: 0.5rem 30%;
 	padding: .5rem;
+}
+
+#addTaskButton:hover, #manageButton:hover {
+	scale: 1.15;
 }
 
 #newListButton
@@ -168,6 +129,7 @@ section figure ul
 #newListButton:hover
 {
 	background-color: gray;
+	scale: 1.15;
 }
 
 li {

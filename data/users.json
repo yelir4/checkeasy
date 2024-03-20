@@ -1,9 +1,44 @@
 {
-  "zcommon@scu.edu": {
-    "email": "zcommon@scu.edu",
-    "password": "12345",
-    "lists": [
-      "P0001"
-    ]
-  }
+    "zcommon@scu.edu": {
+        "email": "zcommon@scu.edu",
+        "password": "12345",
+        "lists": [
+            "P0001"
+        ]
+    },
+    "test@scu.edu": {
+        "email": "test@scu.edu",
+        "password": "456",
+        "lists": []
+    },
+    "tlol@scu.edu": {
+        "email": "tlol@scu.edu",
+        "password": "456",
+        "lists": []
+    },
+    "asdfsdaf@scu.edu": {
+        "email": "asdfsdaf@scu.edu",
+        "password": "1234823423",
+        "lists": []
+    },
+    "user": {
+        "email": "user",
+        "password": "password",
+        "lists": []
+    },
+    "newUser@scu.edu": {
+        "email": "newUser@scu.edu",
+        "password": "mynewuser123",
+        "lists": []
+    },
+    "newaccount427@scu.edu": {
+        "email": "newaccount427@scu.edu",
+        "password": "123456",
+        "lists": []
+    },
+    "demonstration": {
+        "email": "demonstration",
+        "password": "12345",
+        "lists": []
+    }
 }

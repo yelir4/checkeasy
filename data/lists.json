@@ -1,14 +1,169 @@
 {
-  "P0001": {
-    "name": "First List",
-    "creator": "zcommon@scu.edu",
-    "members": [],
-    "incompleteItems": [
-      "Do the dishes",
-      "Do the laundry"
-    ],
-    "completeItems": [
-      "Take a shower"
-    ]
-  }
+    "nextId": "P19",
+    "P1": {
+        "id": "P1",
+        "name": "test",
+        "creator": "zcommon@scu.edu",
+        "members": [
+            "zcommon@scu.edu"
+        ],
+        "items": {
+            "1234": true,
+            "7869": false,
+            "testing": false
+        }
+    },
+    "P2": {
+        "id": "P2",
+        "name": "test2",
+        "creator": "fakeaccount@scu.edu",
+        "members": [
+            "fakeaccount@scu.edu",
+            "zcommon@scu.edu"
+        ],
+        "items": {
+            "5678": false,
+            "testing": false
+        }
+    },
+    "P3": {
+        "id": "P3",
+        "name": "test2",
+        "creator": "zcommon@scu.edu",
+        "members": [
+            "zcommon@scu.edu"
+        ],
+        "items": {
+            "another one": false,
+            "test": true,
+            "another test": true
+        }
+    },
+    "P4": {
+        "id": "P4",
+        "name": "test",
+        "creator": "newaccount427@scu.edu",
+        "members": [
+            "newaccount427@scu.edu"
+        ],
+        "items": {
+            "123456789": false
+        }
+    },
+    "P6": {
+        "id": "P6",
+        "name": "another one",
+        "creator": "zcommon@scu.edu",
+        "members": [
+            "zcommon@scu.edu"
+        ],
+        "items": []
+    },
+    "P7": {
+        "id": "P7",
+        "name": "some more",
+        "creator": "zcommon@scu.edu",
+        "members": [
+            "zcommon@scu.edu"
+        ],
+        "items": []
+    },
+    "P8": {
+        "id": "P8",
+        "name": "more",
+        "creator": "zcommon@scu.edu",
+        "members": [
+            "zcommon@scu.edu"
+        ],
+        "items": []
+    },
+    "P9": {
+        "id": "P9",
+        "name": "even more",
+        "creator": "zcommon@scu.edu",
+        "members": [
+            "zcommon@scu.edu"
+        ],
+        "items": []
+    },
+    "P10": {
+        "id": "P10",
+        "name": "somehow more",
+        "creator": "zcommon@scu.edu",
+        "members": [
+            "zcommon@scu.edu"
+        ],
+        "items": {
+            "test": false,
+            "test2": true
+        }
+    },
+    "P11": {
+        "id": "P11",
+        "name": "testing scroll",
+        "creator": "zcommon@scu.edu",
+        "members": [
+            "zcommon@scu.edu"
+        ],
+        "items": []
+    },
+    "P12": {
+        "id": "P12",
+        "name": "does it keep going",
+        "creator": "zcommon@scu.edu",
+        "members": [
+            "zcommon@scu.edu"
+        ],
+        "items": []
+    },
+    "P15": {
+        "id": "P15",
+        "name": "Testing",
+        "creator": "zcommon@scu.edu",
+        "members": [
+            "zcommon@scu.edu"
+        ],
+        "items": []
+    },
+    "P16": {
+        "id": "P16",
+        "name": "Grocery List",
+        "creator": "demonstration",
+        "members": [
+            "demonstration"
+        ],
+        "items": {
+            "Bagels": false,
+            "Waffles": false,
+            "Bacon": false,
+            "Eggs": false
+        }
+    },
+    "P17": {
+        "id": "P17",
+        "name": "Homework Assignments",
+        "creator": "demonstration",
+        "members": [
+            "demonstration"
+        ],
+        "items": {
+            "CSEN 161": false,
+            "COEN 174": false
+        }
+    },
+    "P18": {
+        "id": "P18",
+        "name": "Friend Bucket List",
+        "creator": "tacoman",
+        "members": [
+            "tacoman",
+            "bob",
+            "steve",
+            "demonstration"
+        ],
+        "items": {
+            "Climb Mount Everest": false,
+            "Go to the Moon": false
+        }
+    }
 }

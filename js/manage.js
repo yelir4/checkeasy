@@ -1,12 +1,21 @@
+let totalMembers = 0;
+
+// Logout button
+const logoutButton = document.getElementById("logout");
+logoutButton.addEventListener("click", () => {
+    window.location.href="../php/index.php?page=logout";
+});
+
 const addTask = (addTaskButton, id) => {
     const addTaskDiv = addTaskButton.parentElement;
     const tasks = addTaskDiv.parentElement.querySelector("ul");
-    addTaskButton.remove();
+    addTaskDiv.setAttribute("style", "display:none");
 
     const input = document.createElement("input");
     input.type = "text";
     input.name = "input";
     input.placeholder = "...";
+    input.id = "newtaskinput"
 
     input.addEventListener("keypress", function(event)
     {
@@ -31,6 +40,8 @@ const addTask = (addTaskButton, id) => {
             tasks.append(task);
 
             addTaskToBackendList(id, value);
+
+            addTaskDiv.setAttribute("style", "display:initial");
         }
     });
 
@@ -45,7 +56,7 @@ const appendContent = async (id) => {
 
     // Only allow access if a user is owner
     if (data.creator !== user) {
-        window.location.href = "./lists.php";
+        window.location.href = "./index.php?page=lists";
         return;
     }
 
@@ -64,6 +75,7 @@ const appendContent = async (id) => {
     // List tasks display
     const tasks = document.createElement("ul");
     const addTaskDiv = document.createElement("div");
+    addTaskDiv.id = "addtaskbutton";
     const addTaskButton = document.createElement("p");
     addTaskButton.innerHTML = "Add Task";
     addTaskButton.addEventListener("click", () => {
@@ -94,6 +106,11 @@ const appendContent = async (id) => {
 
     /** SHARE APPEND */
     const shareContainer = document.getElementById("sharecontainer");
+    const userContainer = document.getElementById("shareusers");
+    const addUserContainer = document.getElementById("addusers");
+
+    const addUserButton = document.createElement("p");
+    const newUserInput = document.createElement("input");
 
     data.members.forEach((member) => {
         if (member !== user) {
@@ -102,11 +119,83 @@ const appendContent = async (id) => {
             memberDisplay.addEventListener("click", async () => {
                 await removeMember(member, data.id);
                 memberDisplay.remove();
+                totalMembers--;
+                if (totalMembers < 1) document.getElementById("emptyshare").setAttribute("style", "display:initial");
+                shareStatus.textContent = "User successfully removed!"
+                shareStatus.setAttribute("style", "color: green");
             });
 
-            shareContainer.append(memberDisplay);
+            userContainer.append(memberDisplay);
+            totalMembers++;
+            console.log(totalMembers);
         }
     });
+
+    if (totalMembers > 0) document.getElementById("emptyshare").setAttribute("style", "display:none");
+
+    // Button to share with more users
+    addUserButton.id = "adduser";
+    addUserButton.textContent = "Share";
+    addUserContainer.append(addUserButton);
+    addUserButton.addEventListener("click", async () => {
+        newUserInput.setAttribute("style", "display:block");
+        addUserButton.setAttribute("style", "display:none");
+        newUserInput.focus();
+        newUserInput.value = "";
+    });
+    addUserContainer.append(addUserButton);
+
+    // New user input
+    newUserInput.id = "newuserinput";
+    newUserInput.placeholder = "New User...";
+    // Hidden by default
+    newUserInput.setAttribute("style", "display:none");
+    newUserInput.addEventListener("keypress", async (event) => {
+       if (event.keyCode === 13) {
+           // Constants
+           const toAdd = newUserInput.value;
+           const allUsers = await getAllUsers();
+           const shareStatus = document.getElementById("sharestatus");
+
+           // Only add new user if they exist
+           if (!allUsers.includes(toAdd)) {
+               shareStatus.textContent = "User does not exist!";
+               shareStatus.setAttribute("style", "color: red");
+               return;
+           } else if (toAdd === data.creator) {
+               shareStatus.textContent = "You are already a part of your own list!"
+               shareStatus.setAttribute("style", "color: red");
+           }
+
+           // Add to member list
+           await addMember(toAdd, data.id);
+           const memberDisplay = document.createElement("p");
+           memberDisplay.textContent = toAdd;
+           totalMembers++;
+           if (totalMembers > 0) document.getElementById("emptyshare").setAttribute("style", "display:none");
+           memberDisplay.addEventListener("click", async () => {
+               await removeMember(toAdd, data.id);
+               memberDisplay.remove();
+               totalMembers--;
+               if (totalMembers < 1) document.getElementById("emptyshare").setAttribute("style", "display:initial");
+               shareStatus.textContent = "User successfully removed!"
+               shareStatus.setAttribute("style", "color: green");
+           });
+
+           userContainer.append(memberDisplay);
+
+           // Update display
+           newUserInput.setAttribute("style", "display:none");
+           addUserButton.setAttribute("style", "display:block");
+           shareStatus.textContent = "User successfully added!";
+           shareStatus.setAttribute("style", "color:green");
+       }
+    });
+    addUserContainer.append(newUserInput);
+
+    const shareStatus = document.createElement("p");
+    shareStatus.id = "sharestatus";
+    shareContainer.append(shareStatus);
 }
 
 // Get proper list from URL params

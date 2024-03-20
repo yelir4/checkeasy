@@ -32,7 +32,7 @@ async function onLoad() {
 		/** list title input */
 		const input = document.createElement("input");
 		input.type = "text";
-		input.placeholder = "list name...";
+		input.placeholder = "List Name...";
 
 		newList.append(input);
 
@@ -73,7 +73,7 @@ async function onLoad() {
 				const ownerP = document.createElement("p");
 				ownerP.setAttribute("id", "ownerP");
 				/** Get current user from backend */
-				ownerP.innerHTML = `Owner ${await getCurrentUser()}`
+				ownerP.innerHTML = `Owner: ${await getCurrentUser()}`
 
 				/** ul list */
 				const tasks = document.createElement("ul");
